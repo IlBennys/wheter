@@ -1,13 +1,14 @@
+import "./WeekTemp.css"
 import { useEffect, useState } from "react"
 import { Card } from "react-bootstrap"
 
-const WeekTemp = () => {
+const WeekTemp = (props) => {
   const [dati, setDati] = useState([])
 
   const weekTempFetch = async () => {
     try {
       const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/forecast?lat=38.1156879&lon=13.3612671&appid=6e501f7c65b17073239db32c79de2f21&units=metric&cnt=8"
+        ` https://api.openweathermap.org/data/2.5/forecast?lat=${props.lat}&lon=${props.long}&appid=6e501f7c65b17073239db32c79de2f21&units=metric&cnt=4`
       )
       if (response.ok) {
         const data = await response.json()

@@ -3,6 +3,7 @@ import "./Navcustom.css"
 import { FaSistrix, FaHome, FaStar, FaCity } from "react-icons/fa"
 import { useState, useEffect } from "react"
 import Temperatura from "../temperatura/Temperatura"
+import WeekTemp from "../WeekTemp/WeekTemp"
 
 const NavCustom = (props) => {
   const [query, setQuery] = useState("")
@@ -15,7 +16,7 @@ const NavCustom = (props) => {
   const handleSubmit = async () => {
     try {
       const result = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21&lang=it`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21`
       )
       if (result.ok) {
         const data = await result.json()
@@ -27,7 +28,6 @@ const NavCustom = (props) => {
       console.log(error)
     }
   }
-
   useEffect(() => {
     handleSubmit()
   }, [])
@@ -71,7 +71,8 @@ const NavCustom = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Temperatura long={meteo.lon} lat={meteo.lat} />
+      <Temperatura long={parseInt(meteo.lon)} lat={parseInt(meteo.lat)} />
+      <WeekTemp long={parseInt(meteo.lon)} lat={parseInt(meteo.lat)} />
     </>
   )
 }

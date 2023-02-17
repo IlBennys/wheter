@@ -8,12 +8,12 @@ const Temperatura = (props) => {
   const file = async () => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?&lat=${props.lat}&lon=${props.long}+&appid=6e501f7c65b17073239db32c79de2f21`
+        `https://api.openweathermap.org/data/2.5/weather?&lat=${props.lat}&lon=${props.long}&appid=6e501f7c65b17073239db32c79de2f21`
       )
       if (response.ok) {
         const data = await response.json()
         setDati(data)
-        // console.log(dati)
+        console.log("ciao" + dati)
       } else {
         console.log("ERROR while fetching")
       }
