@@ -1,8 +1,37 @@
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap"
 import "./Navcustom.css"
 import { FaSistrix, FaHome, FaStar, FaCity } from "react-icons/fa"
+import { useState, useEffect } from "react"
+import Temperatura from "../temperatura/Temperatura"
 
 const NavCustom = (props) => {
+  const [query, setQuery] = useState("")
+  const [meteo, setMeteo] = useState([])
+
+  const handleChange = (e) => {
+    setQuery(e.target.value)
+  }
+
+  const handleSubmit = async () => {
+    try {
+      const result = await fetch(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21&lang=it`
+      )
+      if (result.ok) {
+        const data = await result.json()
+
+        setMeteo(data[0])
+        console.log(meteo)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    handleSubmit()
+  }, [])
+
   return (
     <>
       <Navbar expand="lg" id="Navbar">
@@ -14,27 +43,35 @@ const NavCustom = (props) => {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
               <Nav.Link href="#action1">
-                Home
-                <FaHome />
+                <strong>Home</strong>
+                <FaHome className="ms-1" />
               </Nav.Link>
               <Nav.Link href="#action1">
-                favourite
-                <FaStar />
+                <strong>favourite</strong>
+                <FaStar className="ms-1" />
               </Nav.Link>
               <Nav.Link href="#action2">
-                tutte le città
-                <FaCity />
+                <strong>tutte le città</strong>
+                <FaCity className="ms-1" />
               </Nav.Link>
             </Nav>
             <Form className="d-flex">
-              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-              <Button variant="outline-success">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                value={query}
+                onChange={handleChange}
+              />
+              <Button onClick={handleSubmit}>
                 <FaSistrix />
               </Button>
             </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Temperatura long={meteo.lon} lat={meteo.lat} />
     </>
   )
 }

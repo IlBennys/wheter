@@ -1,14 +1,14 @@
 import "./Temperatura.css"
-import { Card, ListGroup } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 import { useEffect, useState } from "react"
 
-const Temperatura = () => {
+const Temperatura = (props) => {
   const [dati, setDati] = useState([])
 
   const file = async () => {
     try {
       const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?lat=38.1156879&lon=13.3612671&appid=6e501f7c65b17073239db32c79de2f21&units=metric"
+        `https://api.openweathermap.org/data/2.5/weather?&lat=${props.lat}&lon=${props.long}+&appid=6e501f7c65b17073239db32c79de2f21`
       )
       if (response.ok) {
         const data = await response.json()
@@ -26,31 +26,29 @@ const Temperatura = () => {
   }, [])
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-        <Card.Body>
-          <Card.Title>{dati.name}</Card.Title>
-          <Card.Text>
-            <strong>TEMPERATURA ATTUALE:</strong>
-            {dati.main?.temp}°C
-          </Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroup.Item>
-            <strong>temp max:</strong> {dati.main?.temp_max}°C
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <strong>temp min:</strong> {dati.main?.temp_min}°C
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <strong>umidità:</strong> {dati.main?.humidity}%
-          </ListGroup.Item>
-        </ListGroup>
-        <Card.Body>
-          <Card.Link href="#">{dati.weather && dati.weather[0].main}</Card.Link>
-          <Card.Link href="#">{dati.weather && dati.weather[0].description}</Card.Link>
-        </Card.Body>
-      </Card>
+      <div className="d-flex justify-content-center contenitore">
+        <Card style={{ width: "18rem" }} id="card" className="text-center  mt-5 ">
+          <Card.Img variant="top" src={props.nuv} className="nuvola" />
+          <Card.Body id="cardbody">
+            <Card.Title>{dati.name}</Card.Title>
+            <Card.Text>{dati.weather && dati.weather[0].main}</Card.Text>
+            <Card.Text>{dati.weather && dati.weather[0].description}</Card.Text>
+            <Card.Text>
+              <strong>TEMPERATURA ATTUALE: </strong>
+              {dati.main?.temp}°C
+            </Card.Text>
+            <Card.Text>
+              <strong>umidità:</strong> {dati.main?.humidity}%
+            </Card.Text>
+            <Card.Text>
+              <strong>temp max:</strong> {dati.main?.temp_max}°C
+            </Card.Text>
+            <Card.Text>
+              <strong>temp min:</strong> {dati.main?.temp_min}°C
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
     </>
   )
 }

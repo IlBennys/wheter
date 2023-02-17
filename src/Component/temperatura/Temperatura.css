@@ -1,1 +1,21 @@
-/*# sourceMappingURL=Temperatura.css.map */
+body {
+  height: 100vh;
+  background: rgb(1, 97, 181);
+  background: linear-gradient(0deg, rgba(1, 97, 181, 0.8404823111) 34%, rgb(255, 255, 255) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0161b5",endColorstr="#ffffff",GradientType=1);
+}
+
+.nuvola {
+  height: 200px;
+}
+
+#card {
+  border: 1px solid #0161b5;
+  box-shadow: 13px 7px 5px #0161b5;
+}
+
+#cardbody {
+  background: rgb(0, 65, 122);
+  background: linear-gradient(0deg, rgb(0, 65, 122) 0%, rgb(255, 255, 255) 62%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00417a",endColorstr="#ffffff",GradientType=1);
+}/*# sourceMappingURL=Temperatura.css.map */
