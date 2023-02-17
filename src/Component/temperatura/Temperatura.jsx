@@ -13,7 +13,7 @@ const Temperatura = () => {
       if (response.ok) {
         const data = await response.json()
         setDati(data)
-        console.log(dati)
+        // console.log(dati)
       } else {
         console.log("ERROR while fetching")
       }
@@ -47,8 +47,8 @@ const Temperatura = () => {
           </ListGroup.Item>
         </ListGroup>
         <Card.Body>
-          <Card.Link href="#">{dati.weather[0]?.main}</Card.Link>
-          <Card.Link href="#">{dati.weather[0]?.description}</Card.Link>
+          <Card.Link href="#">{dati.weather && dati.weather[0].main}</Card.Link>
+          <Card.Link href="#">{dati.weather && dati.weather[0].description}</Card.Link>
         </Card.Body>
       </Card>
     </>
