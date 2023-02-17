@@ -37,18 +37,18 @@ const Temperatura = () => {
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
-            <strong>temp max:</strong> {dati.main.temp_max}°C
+            <strong>temp max:</strong> {dati.main?.temp_max}°C
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>temp min:</strong> {dati.main.temp_min}°C
+            <strong>temp min:</strong> {dati.main?.temp_min}°C
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>umidità:</strong> {dati.main.humidity}%
+            <strong>umidità:</strong> {dati.main?.humidity}%
           </ListGroup.Item>
         </ListGroup>
         <Card.Body>
-          <Card.Link href="#">{dati.weather[0].main}</Card.Link>
-          <Card.Link href="#">{dati.weather[0].description}</Card.Link>
+          <Card.Link href="#">{dati.weather[0]?.main}</Card.Link>
+          <Card.Link href="#">{dati.weather[0]?.description}</Card.Link>
         </Card.Body>
       </Card>
     </>
