@@ -14,23 +14,24 @@ const NavCustom = (props) => {
   }
 
   const handleSubmit = async () => {
-    try {
-      const result = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21`
-      )
-      if (result.ok) {
-        const data = await result.json()
+    if (query !== "")
+      try {
+        const result = await fetch(
+          `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21`
+        )
+        if (result.ok) {
+          const data = await result.json()
 
-        setMeteo(data[0])
-        console.log(meteo)
+          setMeteo(data[0])
+          console.log(meteo)
+        }
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
-    }
   }
   useEffect(() => {
     handleSubmit()
-  }, [])
+  }, [query])
 
   return (
     <>
@@ -71,6 +72,7 @@ const NavCustom = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
       <Temperatura long={meteo.lon} lat={meteo.lat} />
       <WeekTemp long={meteo.lon} lat={meteo.lat} />
     </>

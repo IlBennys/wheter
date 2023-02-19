@@ -23,7 +23,7 @@ const WeekTemp = (props) => {
   }
   useEffect(() => {
     weekTempFetch()
-  }, [])
+  }, [props.lat, props.long])
   return (
     <>
       <h3>Giornaliero</h3>

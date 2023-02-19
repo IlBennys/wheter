@@ -23,7 +23,7 @@ const Temperatura = (props) => {
   }
   useEffect(() => {
     file()
-  }, [])
+  }, [props.lat, props.long])
   return (
     <>
       <div className="d-flex justify-content-center contenitore">
