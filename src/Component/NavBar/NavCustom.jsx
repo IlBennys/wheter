@@ -71,8 +71,8 @@ const NavCustom = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Temperatura long={parseInt(meteo.lon)} lat={parseInt(meteo.lat)} />
-      <WeekTemp long={parseInt(meteo.lon)} lat={parseInt(meteo.lat)} />
+      <Temperatura long={meteo.lon} lat={meteo.lat} />
+      <WeekTemp long={meteo.lon} lat={meteo.lat} />
     </>
   )
 }
