@@ -1,1 +1,5 @@
-/*# sourceMappingURL=WeekTemp.css.map */
+#ciao {
+  background: rgb(1, 97, 181);
+  background: linear-gradient(0deg, rgba(1, 97, 181, 0.8404823111) 34%, rgb(255, 255, 255) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0161b5",endColorstr="#ffffff",GradientType=1);
+}/*# sourceMappingURL=WeekTemp.css.map */

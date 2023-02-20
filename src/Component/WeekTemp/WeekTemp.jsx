@@ -27,7 +27,7 @@ const WeekTemp = (props) => {
   return (
     <>
       <h3>Giornaliero</h3>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center" id="ciao">
         {dati.map((info) => {
           return (
             <Card className="ms-3">
