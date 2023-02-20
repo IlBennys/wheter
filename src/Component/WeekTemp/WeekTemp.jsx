@@ -30,17 +30,27 @@ const WeekTemp = (props) => {
       <div className="d-flex justify-content-center">
         {dati.map((info) => {
           return (
-            <Card>
+            <Card className="ms-3">
               <Card.Body>
                 <Card.Title>{info.name}</Card.Title>
+                <Card.Text>Ore: {info.dt_txt.slice(11, 16)}</Card.Text>
                 <Card.Text>
                   <strong>TEMPERATURA:</strong>
                   {info.main?.temp}°C
                 </Card.Text>
-                <p>MAX {info.main?.temp_max}°C</p>
-                {info.main?.temp_min}°C
-                {info.main?.humidity}%{info.weather && info.weather[0].main}
-                {info.weather && info.weather[0].description}
+                <p>
+                  <strong>MAX TEMP: </strong> {info.main?.temp_max}°C
+                </p>
+                <p>
+                  <strong>MIN TEMP: </strong> {info.main?.temp_min}°C
+                </p>
+                <p>
+                  <strong>UMIDITA': </strong> {info.main?.humidity}%
+                </p>
+                <p>
+                  <strong>IL CIELO SARA': </strong>
+                  {info.weather && info.weather[0].main}
+                </p>
               </Card.Body>
             </Card>
           )

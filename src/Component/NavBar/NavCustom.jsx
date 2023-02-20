@@ -14,20 +14,20 @@ const NavCustom = (props) => {
   }
 
   const handleSubmit = async () => {
-    if (query !== "")
-      try {
-        const result = await fetch(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21`
-        )
-        if (result.ok) {
-          const data = await result.json()
+    // if (query !== "")
+    try {
+      const result = await fetch(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=6e501f7c65b17073239db32c79de2f21`
+      )
+      if (result.ok) {
+        const data = await result.json()
 
-          setMeteo(data[0])
-          console.log(meteo)
-        }
-      } catch (error) {
-        console.log(error)
+        setMeteo(data[0])
+        console.log(meteo)
       }
+    } catch (error) {
+      console.log(error)
+    }
   }
   useEffect(() => {
     handleSubmit()
